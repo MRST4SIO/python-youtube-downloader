@@ -105,3 +105,27 @@ def video_and_audio_download(url: str, video_id: str, audio_id: str):
     return {'status': 'error', 'errors': [str(e)]}
 
   return {'status': 'ok'}
+
+
+def audiodownloadmp3(url: str):
+
+  ydl_options = {
+      'quiet': True,
+      'no_warnings': True,
+      'format': 'bestaudio/best',
+      'outtmpl': '%(title)s.%(ext)s',
+      'postprocessors': [{
+          'key': 'FFmpegExtractAudio',
+          'preferredcodec': 'mp3',
+          'preferredquality': '0',
+      }],
+  }
+
+  try:
+    with yt_dlp.YoutubeDL(ydl_options) as ydl:
+      ydl.download([url])
+  except Exception as e:
+    print(f"Download error: {e}")
+    return {'status': 'error', 'errors': [str(e)]}
+
+  return {'status': 'ok'}

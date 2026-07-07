@@ -1,6 +1,6 @@
 import yt
 
-url = "https://youtu.be/TOuF7ZbcCUs?si=8H0HNdt4RYqgcFSK"
+url = "https://youtu.be/Npo2I9rY5rM?si=BQMkEF0MzA2JPARf"
 
 
 formats_list = yt.get_formats_list(url)
